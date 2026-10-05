@@ -1,231 +1,50 @@
-<!DOCTYPE html> 
+<!doctype html>
 <html lang="sv">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>DX SYSTEM PORTAL</title>
-
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#111821">
+<title>DX Centralen</title>
 <style>
-body {
-    font-family: Arial, sans-serif;
-    background: #0b0f14;
-    color: #fff;
-    margin: 0;
-    display: flex;
-    justify-content: center;
-}
-
-.wrapper {
-    width: 100%;
-    max-width: 900px;
-}
-
-/* Header */
-header {
-    background: #111821;
-    padding: 20px;
-    text-align: center;
-    font-size: 28px;
-}
-
-/* Statusrad */
-.status {
-    text-align: center;
-    padding: 8px;
-    background: #16202a;
-    font-size: 14px;
-    color: #9ecfff;
-}
-
-/* Välkomsttext */
-#welcome {
-    text-align: center;
-    font-size: 22px;
-    margin-top: 15px;
-    color: #9ecfff;
-}
-
-/* Tid */
-.timebar {
-    display: flex;
-    justify-content: center;
-    gap: 40px;
-    background: #16202a;
-    padding: 15px;
-    font-size: 18px;
-    flex-wrap: wrap;
-}
-
-/* Knappar */
-.container {
-    display: flex;
-    justify-content: center;
-    gap: 30px;
-    padding: 60px 20px;
-    flex-wrap: wrap;
-}
-
-.button {
-    padding: 30px;
-    font-size: 18px;
-    border-radius: 12px;
-    border: none;
-    cursor: pointer;
-    transition: 0.3s;
-    min-width: 220px;
-}
-
-.academy { background: #1e90ff; }
-.os { background: #28a745; }
-.test { background: #ff9800; }
-.ai { background: #9c27b0; }
-
-.button:hover {
-    transform: scale(1.05);
-    opacity: 0.9;
-}
-
-/* Footer */
-footer {
-    text-align: center;
-    padding: 20px;
-    font-size: 12px;
-    color: #666;
-}
-
-/* Mobil */
-@media (max-width: 600px) {
-    .container {
-        gap: 15px;
-        padding: 30px 10px;
-    }
-
-    .button {
-        width: 100%;
-        max-width: 320px;
-        padding: 20px;
-    }
-
-    .timebar {
-        flex-direction: column;
-        gap: 10px;
-    }
-}
+*{box-sizing:border-box}body{margin:0;background:#0b0f1a;color:#fff;font:18px system-ui,-apple-system,Segoe UI,sans-serif}
+.wrap{max-width:1050px;margin:auto;padding:18px}
+header{background:#111821;border-bottom:4px solid #eab308;text-align:center;padding:24px 15px}
+h1{margin:0;font-size:clamp(30px,6vw,50px)}header p{color:#cbd5e1;margin:8px 0 0}
+.time{display:flex;gap:18px;justify-content:center;flex-wrap:wrap;color:#eab308;margin-top:12px;font-weight:700}
+.intro{text-align:center;max-width:760px;margin:24px auto;color:#d1d5db}
+.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+.card{display:block;text-decoration:none;color:#fff;background:#111827;border:1px solid #374151;border-radius:15px;padding:22px;min-height:132px}
+.card:hover,.card:focus{border-color:#eab308;outline:3px solid transparent;transform:translateY(-1px)}
+.icon{font-size:31px}.card h2{margin:5px 0;color:#eab308;font-size:22px}.card p{margin:0;color:#d1d5db;line-height:1.4}
+.primary{border:2px solid #eab308}
+.note{margin:24px 0;background:#111821;border-radius:12px;padding:16px;color:#d1d5db}
+footer{text-align:center;color:#9ca3af;padding:28px 10px;font-size:14px}
+@media(max-width:650px){.grid{grid-template-columns:1fr}.wrap{padding:12px}.card{min-height:auto}}
 </style>
-
 </head>
-
 <body>
-
-<div class="wrapper">
-
 <header>
-DX SYSTEM PORTAL
+<h1>📡 DX CENTRALEN</h1>
+<p>En ingång till hela ditt DX-system</p>
+<div class="time"><span id="date"></span><span id="local"></span><span id="utc"></span></div>
 </header>
-
-<div class="status" id="statusBar">
-🔍 Laddar portalstatus...
+<main class="wrap">
+<p class="intro">Här börjar du. Centralen samlar lyssning, loggar, kurser, mottagare, frekvenser och DX-verktyg utan att flytta eller ändra originalmaterialet.</p>
+<div class="grid">
+<a class="card primary" href="https://1kuli1.github.io/dX-START/"><div class="icon">🎧</div><h2>Lyssna nu</h2><p>Öppna DX-startbordet och välj mottagare för att börja lyssna.</p></a>
+<a class="card primary" href="https://1kuli1.github.io/dx-os/"><div class="icon">📒</div><h2>DX-OS & loggning</h2><p>Operativt DX-arbete, observationer och loggning.</p></a>
+<a class="card" href="https://1kuli1.github.io/DX-Academy/nyborgare/lyssna-pa-varlden.html"><div class="icon">🌍</div><h2>Lyssna på världen</h2><p>ABF-kursen och deltagarnas kursstart för Nivå 1.</p></a>
+<a class="card" href="https://1kuli1.github.io/DX-Academy/"><div class="icon">🎓</div><h2>DX Academy</h2><p>Kurser och lektioner från nybörjare till signalist.</p></a>
+<a class="card" href="https://kiwisdr.com/public/"><div class="icon">📻</div><h2>KiwiSDR-lista</h2><p>Hitta mottagare runt om i världen.</p></a>
+<a class="card" href="http://websdr.org/"><div class="icon">🗺️</div><h2>WebSDR</h2><p>Öppna den officiella WebSDR-listan.</p></a>
+<a class="card" href="https://1kuli1.github.io/DX-Academy/ai_niva_1.html"><div class="icon">🤖</div><h2>Signalhjälp</h2><p>Samla observationer och få hjälp med signalanalys.</p></a>
+<a class="card" href="https://github.com/1kuli1/dx-system"><div class="icon">🛠️</div><h2>System & utveckling</h2><p>DX Centralens GitHub-repo och tekniska underhåll.</p></a>
 </div>
-
-<div id="welcome"></div>
-
-<div class="timebar">
-    <div id="date"></div>
-    <div id="localTime"></div>
-    <div id="utcTime"></div>
-</div>
-
-<div class="container">
-
-    <button class="button academy" onclick="goAcademy()">
-        🎓 DX Academy<br><small>Lär dig DX</small>
-    </button>
-
-    <button class="button os" onclick="goDXOS()">
-        📡 DX-OS<br><small>Operativt system</small>
-    </button>
-
-    <button class="button test" onclick="goTest()">
-        🧪 Testmiljö<br><small>Utveckling</small>
-    </button>
-
-    <button class="button ai" onclick="openAI()">
-        🤖 AI Assistent<br><small>Analysera signaler</small>
-    </button>
-
-</div>
-
-<footer>
-DX SYSTEM v1.0 | Global Radio Intelligence Platform
-</footer>
-
-</div>
-
+<div class="note"><b>Nästa utbyggnad:</b> direkta ingångar till Google Drive för loggböcker, mottagare, frekvenser, referens, special-DX, tävlingar, böcker/artiklar och QSL/SWL. De läggs in efter att varje mållänk har verifierats, så Centralen inte pekar fel.</div>
+</main>
+<footer>DX Centralen • ett startställe för hela DX-arbetet</footer>
 <script>
-
-// ===== NAVIGATION =====
-function goAcademy() {
-    window.location.href = "https://1kuli1.github.io/DX-Academy/academy-start1.html";
-}
-
-function goDXOS() {
-    window.location.href = "https://1kuli1.github.io/dx-os/";
-}
-
-function goTest() {
-    window.location.href = "https://1kuli1.github.io/test/";
-}
-
-function openAI() {
-    window.open("https://chat.openai.com", "_blank");
-}
-
-// ===== TID =====
-const locale = navigator.language;
-
-function updateTime() {
-    const now = new Date();
-
-    document.getElementById("date").innerText =
-        now.toLocaleDateString(locale, {
-            weekday: 'long',
-            year: 'numeric',
-            month: 'long',
-            day: 'numeric'
-        });
-
-    document.getElementById("localTime").innerText =
-        "Lokal: " + now.toLocaleTimeString(locale);
-
-    document.getElementById("utcTime").innerText =
-        "UTC: " + now.toUTCString().split(" ")[4];
-}
-
-// ===== VÄLKOMST =====
-function updateWelcome() {
-    const hour = new Date().getHours();
-    let greeting = "";
-
-    if (hour < 10) greeting = "God morgon";
-    else if (hour < 17) greeting = "God dag";
-    else greeting = "God kväll";
-
-    document.getElementById("welcome").innerText =
-        greeting + " – DX SYSTEM är redo";
-}
-
-// ===== STATUS (smart feature 🔥) =====
-function detectSystem() {
-    document.getElementById("statusBar").innerText = "✅ DX SYSTEM-portalen är laddad";
-}
-
-// Init
-updateTime();
-updateWelcome();
-detectSystem();
-setInterval(updateTime, 1000);
-
+function tick(){const n=new Date(),loc=navigator.language||"sv-SE";date.textContent=n.toLocaleDateString(loc,{weekday:"long",year:"numeric",month:"long",day:"numeric"});local.textContent="Lokal: "+n.toLocaleTimeString(loc,{hour:"2-digit",minute:"2-digit"});utc.textContent="UTC: "+n.toISOString().slice(11,16)}
+tick();setInterval(tick,30000);
 </script>
-
-</body>
-</html>
+</body></html>
