@@ -1,50 +1,14 @@
-<!doctype html>
-<html lang="sv">
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="theme-color" content="#111821">
-<title>DX Centralen</title>
-<style>
-*{box-sizing:border-box}body{margin:0;background:#0b0f1a;color:#fff;font:18px system-ui,-apple-system,Segoe UI,sans-serif}
-.wrap{max-width:1050px;margin:auto;padding:18px}
-header{background:#111821;border-bottom:4px solid #eab308;text-align:center;padding:24px 15px}
-h1{margin:0;font-size:clamp(30px,6vw,50px)}header p{color:#cbd5e1;margin:8px 0 0}
-.time{display:flex;gap:18px;justify-content:center;flex-wrap:wrap;color:#eab308;margin-top:12px;font-weight:700}
-.intro{text-align:center;max-width:760px;margin:24px auto;color:#d1d5db}
-.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
-.card{display:block;text-decoration:none;color:#fff;background:#111827;border:1px solid #374151;border-radius:15px;padding:22px;min-height:132px}
-.card:hover,.card:focus{border-color:#eab308;outline:3px solid transparent;transform:translateY(-1px)}
-.icon{font-size:31px}.card h2{margin:5px 0;color:#eab308;font-size:22px}.card p{margin:0;color:#d1d5db;line-height:1.4}
-.primary{border:2px solid #eab308}
-.note{margin:24px 0;background:#111821;border-radius:12px;padding:16px;color:#d1d5db}
-footer{text-align:center;color:#9ca3af;padding:28px 10px;font-size:14px}
-@media(max-width:650px){.grid{grid-template-columns:1fr}.wrap{padding:12px}.card{min-height:auto}}
-</style>
-</head>
-<body>
-<header>
-<h1>📡 DX CENTRALEN</h1>
-<p>En ingång till hela ditt DX-system</p>
-<div class="time"><span id="date"></span><span id="local"></span><span id="utc"></span></div>
-</header>
-<main class="wrap">
-<p class="intro">Här börjar du. Centralen samlar lyssning, loggar, kurser, mottagare, frekvenser och DX-verktyg utan att flytta eller ändra originalmaterialet.</p>
-<div class="grid">
-<a class="card primary" href="https://1kuli1.github.io/dX-START/"><div class="icon">🎧</div><h2>Lyssna nu</h2><p>Öppna DX-startbordet och välj mottagare för att börja lyssna.</p></a>
-<a class="card primary" href="https://1kuli1.github.io/dx-os/"><div class="icon">📒</div><h2>DX-OS & loggning</h2><p>Operativt DX-arbete, observationer och loggning.</p></a>
-<a class="card" href="https://1kuli1.github.io/DX-Academy/nyborgare/lyssna-pa-varlden.html"><div class="icon">🌍</div><h2>Lyssna på världen</h2><p>ABF-kursen och deltagarnas kursstart för Nivå 1.</p></a>
-<a class="card" href="https://1kuli1.github.io/DX-Academy/"><div class="icon">🎓</div><h2>DX Academy</h2><p>Kurser och lektioner från nybörjare till signalist.</p></a>
-<a class="card" href="https://kiwisdr.com/public/"><div class="icon">📻</div><h2>KiwiSDR-lista</h2><p>Hitta mottagare runt om i världen.</p></a>
-<a class="card" href="http://websdr.org/"><div class="icon">🗺️</div><h2>WebSDR</h2><p>Öppna den officiella WebSDR-listan.</p></a>
-<a class="card" href="https://1kuli1.github.io/DX-Academy/ai_niva_1.html"><div class="icon">🤖</div><h2>Signalhjälp</h2><p>Samla observationer och få hjälp med signalanalys.</p></a>
-<a class="card" href="https://github.com/1kuli1/dx-system"><div class="icon">🛠️</div><h2>System & utveckling</h2><p>DX Centralens GitHub-repo och tekniska underhåll.</p></a>
-</div>
-<div class="note"><b>Nästa utbyggnad:</b> direkta ingångar till Google Drive för loggböcker, mottagare, frekvenser, referens, special-DX, tävlingar, böcker/artiklar och QSL/SWL. De läggs in efter att varje mållänk har verifierats, så Centralen inte pekar fel.</div>
-</main>
-<footer>DX Centralen • ett startställe för hela DX-arbetet</footer>
-<script>
-function tick(){const n=new Date(),loc=navigator.language||"sv-SE";date.textContent=n.toLocaleDateString(loc,{weekday:"long",year:"numeric",month:"long",day:"numeric"});local.textContent="Lokal: "+n.toLocaleTimeString(loc,{hour:"2-digit",minute:"2-digit"});utc.textContent="UTC: "+n.toISOString().slice(11,16)}
-tick();setInterval(tick,30000);
-</script>
-</body></html>
+<!doctype html><html lang="sv"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#111821"><title>DX Centralen</title>
+<style>*{box-sizing:border-box}body{margin:0;background:#0b0f1a;color:#fff;font:18px system-ui,-apple-system,Segoe UI,sans-serif}header{background:#111821;border-bottom:4px solid #eab308;text-align:center;padding:24px 15px}h1{margin:0;font-size:clamp(30px,6vw,50px)}header p{color:#cbd5e1;margin:7px}.time{display:flex;gap:18px;justify-content:center;flex-wrap:wrap;color:#eab308;font-weight:700}.wrap{max-width:950px;margin:auto;padding:20px}.intro{text-align:center;color:#d1d5db;max-width:760px;margin:10px auto 24px}.main{display:grid;gap:18px}.big{display:block;text-decoration:none;color:#fff;background:#111827;border:2px solid #eab308;border-radius:18px;padding:28px}.big h2{font-size:28px;margin:4px 0;color:#eab308}.big p{margin:4px 0;color:#d1d5db}.steps{font-weight:700;margin-top:14px!important;color:#fff!important}.secondary{display:grid;grid-template-columns:1fr 1fr;gap:16px}.card{display:block;text-decoration:none;color:#fff;background:#111827;border:1px solid #374151;border-radius:15px;padding:22px}.card h2{margin:5px 0;color:#eab308}.card p{margin:0;color:#d1d5db}.big:hover,.big:focus,.card:hover,.card:focus{outline:3px solid #facc15;outline-offset:2px}.tools{margin-top:24px;padding:18px;background:#111821;border-radius:15px}.tools h2{margin-top:0}.toolrow{display:flex;gap:10px;flex-wrap:wrap}.toolrow a{background:#1f2937;color:#fff;text-decoration:none;padding:12px 15px;border-radius:10px}footer{text-align:center;color:#9ca3af;padding:26px;font-size:14px}@media(max-width:650px){.secondary{grid-template-columns:1fr}.wrap{padding:12px}.big{padding:22px}}</style></head>
+<body><header><h1>📡 DX CENTRALEN</h1><p>Allt DX från ett ställe</p><div class="time"><span id="date"></span><span id="local"></span><span id="utc"></span></div></header>
+<main class="wrap"><p class="intro">Du behöver inte längre välja mellan DX Start och DX-OS. Börja med arbetsbordet och gå vidare i samma arbetsflöde.</p>
+<div class="main">
+<a class="big" href="https://1kuli1.github.io/dX-START/"><div style="font-size:38px">🎧</div><h2>BÖRJA DX:A</h2><p>Lyssna, undersök signalen och gå vidare till loggning.</p><p class="steps">Lyssna → Analysera → Identifiera → Logga</p></a>
+<div class="secondary">
+<a class="card" href="https://1kuli1.github.io/DX-Academy/"><div style="font-size:32px">🎓</div><h2>LÄR MIG DX</h2><p>DX Academy och Lyssna på världen – från nybörjare till signalist.</p></a>
+<a class="card" href="https://1kuli1.github.io/dx-os/"><div style="font-size:32px">📚</div><h2>MITT DX-ARBETSARKIV</h2><p>DX-OS, observationer, analys och det operativa DX-arbetet.</p></a>
+</div></div>
+<section class="tools"><h2>Snabbverktyg</h2><div class="toolrow">
+<a href="https://kiwisdr.com/public/">📻 KiwiSDR</a><a href="http://websdr.org/">🗺️ WebSDR</a><a href="https://1kuli1.github.io/DX-Academy/nyborgare/lyssna-pa-varlden.html">🌍 ABF Nivå 1</a>
+</div></section></main><footer>DX Centralen • DX Start + DX-OS i ett gemensamt arbetsflöde</footer>
+<script>function tick(){const n=new Date(),l=navigator.language||"sv-SE";date.textContent=n.toLocaleDateString(l,{weekday:"long",year:"numeric",month:"long",day:"numeric"});local.textContent="Lokal: "+n.toLocaleTimeString(l,{hour:"2-digit",minute:"2-digit"});utc.textContent="UTC: "+n.toISOString().slice(11,16)}tick();setInterval(tick,30000)</script></body></html>
