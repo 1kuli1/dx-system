@@ -124,7 +124,7 @@ DX SYSTEM PORTAL
 </header>
 
 <div class="status" id="statusBar">
-🔍 Laddar systemstatus...
+🔍 Laddar portalstatus...
 </div>
 
 <div id="welcome"></div>
@@ -216,15 +216,7 @@ function updateWelcome() {
 
 // ===== STATUS (smart feature 🔥) =====
 function detectSystem() {
-    const url = window.location.href;
-
-    let system = "DX SYSTEM";
-
-    if (url.includes("dx-os")) system = "📡 DX-OS aktivt";
-    if (url.includes("DX-Academy")) system = "🎓 DX Academy aktivt";
-    if (url.includes("test")) system = "🧪 Testmiljö aktiv";
-
-    document.getElementById("statusBar").innerText = system;
+    document.getElementById("statusBar").innerText = "✅ DX SYSTEM-portalen är laddad";
 }
 
 // Init
