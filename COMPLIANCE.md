@@ -105,3 +105,16 @@ Dessa ska omprövas om funktionerna ändras:
 1. Fastställ den juridiska aktör som står bakom DX Academy/DX Centralen och vilken kontaktadress/e-post som ska publiceras.
 2. Bestäm om kurser ska kunna köpas/avtalas direkt online eller endast marknadsföras.
 3. Säkerhetsgranska och separera Google Drive-synken innan publik fleranvändaranvändning.
+
+
+## 9. Katastrof-DX / nödradiolyssning
+
+- [x] Katastrof-DX är uttryckligen ett lyssnar- och dokumentationsverktyg och startar ingen sändning.
+- [x] Tydlig instruktion att aldrig störa nödradio eller aktiv EmComm-trafik.
+- [x] Skillnad mellan bekräftat nödradionät, bevakningsläge och ingen känd aktivering.
+- [x] Frekvenslistor presenteras som startpunkter och ska verifieras mot aktuella officiella källor.
+- [x] Separat Katastrof-DX-loggbok så att krisobservationer inte blandas ihop med ordinarie DX-logg.
+- [x] Katastrofloggen lagras lokalt på enheten och kan exporteras av användaren.
+- [x] Varning mot att lagra eller sprida onödiga känsliga personuppgifter om drabbade personer.
+- [ ] Bedöm ytterligare rättsliga krav innan automatisk vidarepublicering, delning eller central insamling av katastrofloggar införs.
+- [ ] Om automatisk hämtning av händelser/frekvenser införs: dokumentera källa, uppdateringstid och datalicens samt undvik att visa obekräftad information som officiell.
