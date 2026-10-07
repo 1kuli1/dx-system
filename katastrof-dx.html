@@ -139,25 +139,32 @@ function esc(s){return String(s??"").replace(/[&<>"']/g,m=>({"&":"&amp;","<":"&l
 function load(){try{return JSON.parse(localStorage.getItem(KEY)||"[]")}catch(e){return[]}}
 function store(v){localStorage.setItem(KEY,JSON.stringify(v))}
 const SDR_AREAS={
-"nordic":{region:"Sverige, Norge, Finland, Danmark eller norra Tyskland",tip:"Välj en SDR i eller nära Norden. För HF kan även norra Tyskland/Nederländerna ge bra regional täckning."},
-"europe":{region:"Tyskland, Nederländerna, Frankrike, Italien eller Österrike",tip:"Välj en SDR i Centraleuropa och helst i samma eller angränsande land som katastrofen."},
-"med":{region:"Grekland, Italien, Bulgarien, Rumänien eller Turkiet",tip:"För Balkan/Turkiet/östra Medelhavet: välj en SDR nära området. 7 MHz är ofta särskilt användbart kvällstid."},
-"africa":{region:"Nordafrika, Sydeuropa eller Sydafrika beroende på händelse",tip:"Afrika har glesare SDR-täckning. Välj närmaste publika mottagare, gärna i samma del av kontinenten eller i Sydeuropa."},
-"mena":{region:"Grekland, Cypern, Turkiet, Israel eller Gulfregionen",tip:"Välj en SDR så nära händelseområdet som möjligt och kontrollera både regional HF och 14 MHz."},
-"asia":{region:"Indonesien, Malaysia, Singapore, Thailand eller Indien",tip:"För Syd-/Sydostasien: välj en SDR i samma land eller grannland. Australien kan fungera som reserv för HF."},
-"japan":{region:"Japan, Sydkorea, Taiwan eller Filippinerna",tip:"Välj en SDR i Japan/Korea/Taiwan för lokal/regional HF. För västra Stilla havet fungerar även Filippinerna."},
-"pacific":{region:"Guam, Marianerna, Palau, Mikronesien eller Filippinerna",tip:"För öar i västra Stilla havet: prioritera Guam/Marianerna. Filippinerna är ett bra reservområde för HF."},
-"usa-east":{region:"Florida, Georgia, Carolinas, Puerto Rico eller östra USA",tip:"För orkaner i Karibien/Atlanten: välj Florida, Puerto Rico eller USA:s östkust beroende på stormläge."},
-"usa-gulf":{region:"Louisiana, Mississippi, Alabama, Florida Panhandle eller östra Texas",tip:"För Mexikanska golfen: välj mottagare längs centrala Gulfkusten. För HWN bevaka 14.325 USB och 7.268 LSB när nätet är aktivt."},
-"usa-west":{region:"Kalifornien, Arizona, Baja California eller Sonora",tip:"För Baja/nordvästra Mexiko: välj södra Kalifornien, Arizona eller Sonora. För lokal trafik är närhet viktigast."},
-"latam":{region:"Mexiko, Centralamerika, Brasilien, Argentina eller Chile beroende på händelse",tip:"Välj samma land om möjligt. Annars grannland med god HF-täckning mot katastrofområdet."},
-"oceania":{region:"Australien eller Nya Zeeland",tip:"Välj mottagare i samma land eller närmaste kustregion. Australien kan även vara bra för Indonesien och södra Stilla havet."}
+"nordic":{region:"Sverige, Norge, Finland, Danmark eller norra Tyskland",freq:"7.110 MHz",mode:"LSB",source:"IARU Region 1 – startpunkt, verifiera aktuell aktivering",tip:"Välj en SDR i eller nära Norden. För HF kan även norra Tyskland/Nederländerna ge bra regional täckning."},
+"europe":{region:"Tyskland, Nederländerna, Frankrike, Italien eller Österrike",freq:"7.110 MHz",mode:"LSB",source:"IARU Region 1 – startpunkt, verifiera aktuell aktivering",tip:"Välj en SDR i Centraleuropa och helst i samma eller angränsande land som katastrofen."},
+"med":{region:"Grekland, Italien, Bulgarien, Rumänien eller Turkiet",freq:"7.110 MHz",mode:"LSB",source:"IARU Region 1 – startpunkt, verifiera aktuell aktivering",tip:"För Balkan/Turkiet/östra Medelhavet: välj en SDR nära området. 7 MHz är ofta särskilt användbart kvällstid."},
+"africa":{region:"Nordafrika, Sydeuropa eller Sydafrika beroende på händelse",freq:"14.300 MHz",mode:"USB",source:"IARU – internationell startpunkt, verifiera aktuell aktivering",tip:"Afrika har glesare SDR-täckning. Välj närmaste publika mottagare, gärna i samma del av kontinenten eller i Sydeuropa."},
+"mena":{region:"Grekland, Cypern, Turkiet, Israel eller Gulfregionen",freq:"14.300 MHz",mode:"USB",source:"IARU – internationell startpunkt, verifiera aktuell aktivering",tip:"Välj en SDR så nära händelseområdet som möjligt och kontrollera både regional HF och 14 MHz."},
+"asia":{region:"Indonesien, Malaysia, Singapore, Thailand eller Indien",freq:"7.110 MHz",mode:"LSB",source:"IARU/regionell startpunkt – verifiera lokal aktivering",tip:"För Syd-/Sydostasien: välj en SDR i samma land eller grannland. Australien kan fungera som reserv för HF."},
+"japan":{region:"Japan, Sydkorea, Taiwan eller Filippinerna",freq:"14.300 MHz",mode:"USB",source:"IARU – internationell startpunkt, verifiera aktuell aktivering",tip:"Välj en SDR i Japan/Korea/Taiwan för lokal/regional HF. För västra Stilla havet fungerar även Filippinerna."},
+"pacific":{region:"Guam, Marianerna, Palau, Mikronesien eller Filippinerna",freq:"14.300 MHz",mode:"USB",source:"IARU – internationell startpunkt, verifiera aktuell aktivering",tip:"För öar i västra Stilla havet: prioritera Guam/Marianerna. Filippinerna är ett bra reservområde för HF."},
+"usa-east":{region:"Florida, Georgia, Carolinas, Puerto Rico eller östra USA",freq:"14.325 MHz",mode:"USB",source:"Hurricane Watch Net – startpunkt; aktivt nät måste verifieras",tip:"För orkaner i Karibien/Atlanten: välj Florida, Puerto Rico eller USA:s östkust beroende på stormläge."},
+"usa-gulf":{region:"Louisiana, Mississippi, Alabama, Florida Panhandle eller östra Texas",freq:"7.268 MHz",mode:"LSB",source:"Hurricane Watch Net – startpunkt; aktivt nät måste verifieras",tip:"För Mexikanska golfen: välj mottagare längs centrala Gulfkusten. För HWN bevaka 14.325 USB och 7.268 LSB när nätet är aktivt."},
+"usa-west":{region:"Kalifornien, Arizona, Baja California eller Sonora",freq:"14.300 MHz",mode:"USB",source:"IARU – internationell startpunkt, verifiera regional aktivering",tip:"För Baja/nordvästra Mexiko: välj södra Kalifornien, Arizona eller Sonora. För lokal trafik är närhet viktigast."},
+"latam":{region:"Mexiko, Centralamerika, Brasilien, Argentina eller Chile beroende på händelse",freq:"14.300 MHz",mode:"USB",source:"IARU – internationell startpunkt, verifiera nationell aktivering",tip:"Välj samma land om möjligt. Annars grannland med god HF-täckning mot katastrofområdet."},
+"oceania":{region:"Australien eller Nya Zeeland",freq:"14.300 MHz",mode:"USB",source:"IARU – internationell startpunkt, verifiera aktuell aktivering",tip:"Välj mottagare i samma land eller närmaste kustregion. Australien kan även vara bra för Indonesien och södra Stilla havet."}
 };
 function updateSdrRecommendation(){
  const key=document.getElementById("sdrArea").value;
  const d=SDR_AREAS[key];
  document.getElementById("sdrRegion").value=d?d.region:"";
  document.getElementById("sdrTip").textContent=d?d.tip:"Välj katastrofområde för att få ett mottagarförslag.";
+ if(d){
+   document.getElementById("rxregion").value=d.region;
+   document.getElementById("freq").value=d.freq||"";
+   document.getElementById("mode").value=d.mode||"";
+   document.getElementById("source").value=d.source||"";
+   document.getElementById("status").value="🟠 Bevakningsläge";
+ }
 }
 function openRecommendedSdr(){
  const key=document.getElementById("sdrArea").value;
