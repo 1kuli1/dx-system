@@ -43,6 +43,35 @@ label{display:block;color:var(--muted);font-size:13px;margin-bottom:5px}input,se
 
 <section class="grid">
 <div class="card">
+<h2>🌍 Välj katastrofområde</h2>
+<p class="small">Välj den del av världen där händelsen pågår. Katastrof-DX visar en rekommenderad SDR-region och öppnar Receiver Hub för fortsatt val av mottagare.</p>
+<div class="formgrid">
+<div><label for="sdrArea">Katastrofområde</label>
+<select id="sdrArea" onchange="updateSdrRecommendation()">
+<option value="">Välj område…</option>
+<option value="nordic">Norden / norra Europa</option>
+<option value="europe">Centraleuropa / Sydeuropa</option>
+<option value="med">Medelhavet / Turkiet / Balkan</option>
+<option value="africa">Afrika</option>
+<option value="mena">Mellanöstern</option>
+<option value="asia">Syd- och Sydostasien</option>
+<option value="japan">Japan / Korea / västra Stilla havet</option>
+<option value="pacific">Guam / Marianerna / Mikronesien / Stilla havet</option>
+<option value="usa-east">USA östkust / Karibien</option>
+<option value="usa-gulf">USA Gulfkust / Mexikanska golfen</option>
+<option value="usa-west">USA västkust / Baja California</option>
+<option value="latam">Central- och Sydamerika</option>
+<option value="oceania">Australien / Nya Zeeland</option>
+</select></div>
+<div><label for="sdrRegion">Rekommenderad SDR-region</label><input id="sdrRegion" readonly placeholder="Välj område ovan"></div>
+</div>
+<div class="buttons" style="margin-top:12px">
+<button type="button" class="btn main" onclick="openRecommendedSdr()">▶ Öppna lämplig SDR</button>
+<button type="button" class="btn" onclick="copySdrTip()">Kopiera SDR-tipset</button>
+</div>
+<div id="sdrTip" class="notice" role="status" aria-live="polite" style="margin-top:12px">Välj katastrofområde för att få ett mottagarförslag.</div>
+</div>
+<div class="card">
 <h2>📡 Startfrekvenser</h2>
 <p class="small">Endast startpunkter. Officiella aktiveringsbesked gäller alltid före denna lista.</p>
 <div class="freqs">
@@ -109,6 +138,40 @@ const ids=["date","utc","event","area","status","source","freq","mode","rx","rxr
 function esc(s){return String(s??"").replace(/[&<>"']/g,m=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[m]))}
 function load(){try{return JSON.parse(localStorage.getItem(KEY)||"[]")}catch(e){return[]}}
 function store(v){localStorage.setItem(KEY,JSON.stringify(v))}
+const SDR_AREAS={
+"nordic":{region:"Sverige, Norge, Finland, Danmark eller norra Tyskland",tip:"Välj en SDR i eller nära Norden. För HF kan även norra Tyskland/Nederländerna ge bra regional täckning."},
+"europe":{region:"Tyskland, Nederländerna, Frankrike, Italien eller Österrike",tip:"Välj en SDR i Centraleuropa och helst i samma eller angränsande land som katastrofen."},
+"med":{region:"Grekland, Italien, Bulgarien, Rumänien eller Turkiet",tip:"För Balkan/Turkiet/östra Medelhavet: välj en SDR nära området. 7 MHz är ofta särskilt användbart kvällstid."},
+"africa":{region:"Nordafrika, Sydeuropa eller Sydafrika beroende på händelse",tip:"Afrika har glesare SDR-täckning. Välj närmaste publika mottagare, gärna i samma del av kontinenten eller i Sydeuropa."},
+"mena":{region:"Grekland, Cypern, Turkiet, Israel eller Gulfregionen",tip:"Välj en SDR så nära händelseområdet som möjligt och kontrollera både regional HF och 14 MHz."},
+"asia":{region:"Indonesien, Malaysia, Singapore, Thailand eller Indien",tip:"För Syd-/Sydostasien: välj en SDR i samma land eller grannland. Australien kan fungera som reserv för HF."},
+"japan":{region:"Japan, Sydkorea, Taiwan eller Filippinerna",tip:"Välj en SDR i Japan/Korea/Taiwan för lokal/regional HF. För västra Stilla havet fungerar även Filippinerna."},
+"pacific":{region:"Guam, Marianerna, Palau, Mikronesien eller Filippinerna",tip:"För öar i västra Stilla havet: prioritera Guam/Marianerna. Filippinerna är ett bra reservområde för HF."},
+"usa-east":{region:"Florida, Georgia, Carolinas, Puerto Rico eller östra USA",tip:"För orkaner i Karibien/Atlanten: välj Florida, Puerto Rico eller USA:s östkust beroende på stormläge."},
+"usa-gulf":{region:"Louisiana, Mississippi, Alabama, Florida Panhandle eller östra Texas",tip:"För Mexikanska golfen: välj mottagare längs centrala Gulfkusten. För HWN bevaka 14.325 USB och 7.268 LSB när nätet är aktivt."},
+"usa-west":{region:"Kalifornien, Arizona, Baja California eller Sonora",tip:"För Baja/nordvästra Mexiko: välj södra Kalifornien, Arizona eller Sonora. För lokal trafik är närhet viktigast."},
+"latam":{region:"Mexiko, Centralamerika, Brasilien, Argentina eller Chile beroende på händelse",tip:"Välj samma land om möjligt. Annars grannland med god HF-täckning mot katastrofområdet."},
+"oceania":{region:"Australien eller Nya Zeeland",tip:"Välj mottagare i samma land eller närmaste kustregion. Australien kan även vara bra för Indonesien och södra Stilla havet."}
+};
+function updateSdrRecommendation(){
+ const key=document.getElementById("sdrArea").value;
+ const d=SDR_AREAS[key];
+ document.getElementById("sdrRegion").value=d?d.region:"";
+ document.getElementById("sdrTip").textContent=d?d.tip:"Välj katastrofområde för att få ett mottagarförslag.";
+}
+function openRecommendedSdr(){
+ const key=document.getElementById("sdrArea").value;
+ if(!key){document.getElementById("sdrTip").textContent="Välj först katastrofområde.";return}
+ const d=SDR_AREAS[key];
+ try{localStorage.setItem("dxKatastrofSdrRegion",JSON.stringify({key:key,region:d.region,tip:d.tip,ts:Date.now()}))}catch(e){}
+ window.location.href="https://1kuli1.github.io/dX-START/receiver-hub.html";
+}
+function copySdrTip(){
+ const key=document.getElementById("sdrArea").value;
+ if(!key){document.getElementById("sdrTip").textContent="Välj först katastrofområde.";return}
+ const d=SDR_AREAS[key],txt="Rekommenderad SDR-region: "+d.region+"\n"+d.tip;
+ if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(txt).then(()=>document.getElementById("sdrTip").textContent="SDR-tipset är kopierat.").catch(()=>{})}
+}
 function nowUTC(){const n=new Date();date.value=n.toISOString().slice(0,10);utc.value=n.toISOString().slice(11,16)}
 function clearForm(){ids.forEach(id=>{const e=document.getElementById(id);if(e.tagName==="SELECT")return;e.value=""});status.selectedIndex=1;confidence.selectedIndex=1;nowUTC();logStatus.textContent=""}
 function saveLog(){
