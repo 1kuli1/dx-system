@@ -115,7 +115,7 @@ function saveLog(){
  const item={id:Date.now()};
  ids.forEach(id=>item[id]=document.getElementById(id).value.trim());
  if(!item.event||!item.area){logStatus.textContent="Fyll i minst katastrof/händelse och land/område.";return}
- const data=load();data.unshift(item);store(data);render();logStatus.textContent="Observationen är sparad i Katastrof-DX-loggboken på den här enheten.";clearForm()
+ const data=load();data.unshift(item);store(data);render();clearForm();logStatus.textContent="Observationen är sparad i Katastrof-DX-loggboken på den här enheten."
 }
 function del(id){if(!confirm("Radera den här observationen?"))return;store(load().filter(x=>x.id!==id));render()}
 function render(){
